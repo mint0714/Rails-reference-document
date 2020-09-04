@@ -9,4 +9,21 @@ class LessonController < ApplicationController
     #render plain: request.env["HTTP_USER_AGENT"]
     render plain: request.headers["User-Agent"]
   end
+
+  def step3
+    redirect_to action: "step4"
+  end
+
+  def step4
+    render plain: "step4に移動しました。"
+  end
+
+  def step5
+    flash[:notice] = "step6に移動します。"
+    redirect_to action: "step6"
+  end
+
+  def step6
+    render plain: flash[:notice]
+  end
 end
